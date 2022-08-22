@@ -15,7 +15,7 @@ public class LoginSteps {
 	
 	@Given("^user is on login page$")
 	public void user_is_on_login_page() {
-		System.setProperty("webdriver.chrome.driver", "E:\\drivers\\chromedriver_104.exe");
+		System.setProperty("webdriver.chrome.driver", "./drivers//chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://neostox.com/sign-in");
