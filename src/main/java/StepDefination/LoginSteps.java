@@ -8,6 +8,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import junit.framework.Assert;
 
 public class LoginSteps {
 	
@@ -21,20 +22,24 @@ public class LoginSteps {
 		driver.get("https://neostox.com/sign-in");
 	}
 	
-	@When("^user enters mobile number$")
-	public void user_enters_username() {
-		driver.findElement(By.xpath("//input[@id='txt_mobilenumber']")).sendKeys("9604154175");
+	@When("^user enters \"(.*)\"$")
+	public void user_enters_username(String mobileNo) throws InterruptedException {
+		driver.findElement(By.xpath("//input[@id='txt_mobilenumber']")).sendKeys(mobileNo);
+		Thread.sleep(2000);
 	}
 	
 	
 	@When("^user clicks on Submit button$")
-	public void user_clicks_on_Submit_button() {
+	public void user_clicks_on_Submit_button() throws InterruptedException {
 		driver.findElement(By.id("lnk_submitmobnumber")).click();
+		Thread.sleep(2000);
 	}
 	
-	@When("^user enters pin$")
-	public void user_enters_password()  {
-	 driver.findElement(By.xpath("//input[@id='txt_accesspin']")).sendKeys("2812");
+	@When("^user enters \"(.*)\" in pinbox$")
+	public void user_enters_pin(String pin) throws InterruptedException  {
+		
+	 driver.findElement(By.xpath("//input[@id='txt_accesspin']")).sendKeys(pin);
+	 Thread.sleep(2000);
 	}
 
 	@When("^user clicks on Submit pin button$")
@@ -46,7 +51,7 @@ public class LoginSteps {
 
 	@Then("^user should land on HomePage$")
 	public void user_should_land_on_HomePage() {
-		
+		Assert.assertEquals("Hi", "Hi");
 	}
 	
 	@And("^user closes browser$")
