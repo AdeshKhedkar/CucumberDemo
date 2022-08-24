@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import junit.framework.Assert;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
 
 public class LoginSteps {
 	
@@ -43,19 +43,32 @@ public class LoginSteps {
 	}
 
 	@When("^user clicks on Submit pin button$")
-	public void user_clicks_on_Submit_pin_button(){
+	public void user_clicks_on_Submit_pin_button() throws InterruptedException{
 			driver.findElement(By.id("lnk_submitaccesspin")).click();
-		
-		
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("(//a[text()='OK'])[1]")).click();
 	}
 
 	@Then("^user should land on HomePage$")
 	public void user_should_land_on_HomePage() {
-		Assert.assertEquals("Hi", "Hi");
+		
 	}
 	
 	@And("^user closes browser$")
 	public void user_closes_browser() {
 		driver.quit();
 	}
+	
+	@And("^user clicks on Expand and collapse button$")
+	public void user_clicks_on_Expand_and_collapse_button() {
+		
+		driver.findElement(By.xpath("//button[@title='Show Instrument List']")).click();
+	}
+	
+	@Then("user clicks on pending order")
+	public void user_clicks_on_pending_order() {
+	  
+		driver.findElement(By.xpath("//a[@id='lnk_pendingorders']")).click();
+	}
+	
 }

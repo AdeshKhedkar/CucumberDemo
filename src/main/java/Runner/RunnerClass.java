@@ -1,20 +1,12 @@
 package Runner;
 
-import org.junit.runner.RunWith;
-
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 
 
-
-@RunWith(Cucumber.class)
-@CucumberOptions(features = "D:\\makemytrip\\CucumberDemo\\src\\main\\java\\Features\\Login.feature",//Feature file path
-glue ="StepDefination" ,//StepDefination path
-plugin = {"pretty" , "html:test-output"},
-dryRun= false,
-monochrome = true, 
-tags = {"@Login"}
-
+@CucumberOptions(features = "src/main/java/Features",//Feature file path
+glue ="StepDefination", //StepDefination path
+dryRun=false, monochrome = true, tags= ("@hooks or @Login") 
 		) 
 
 /*
@@ -24,12 +16,11 @@ tags = {"@Login"}
  * dryRun : It is used to map feature file steps and step defination file
  * monochrome : It is used to display console output in proper readble format
  * tags = {"@Login" , "@Regression"}   AND Operator
- * tags = {"@Login, @Regression, @Sanity"}  OR operator
+ * tags = {"@Login, @Regression, @Sanity"}  OR operator --> Junit
+ * tags= ("@Adesh or @PendingOrder or @Login")   OR operator --> TestNG
  */
 
-public class RunnerClass {
-	
-	
+public class RunnerClass extends AbstractTestNGCucumberTests {
 	
 
 }

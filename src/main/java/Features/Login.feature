@@ -27,10 +27,10 @@ Feature: Login Page feature
   And user closes browser
     
     Examples:
-    | MobileNumber | Pin |
-    | 9604154175 | 2812 |
-    | 8788710785 | 7350 | 
-    | 1234567891 | 1250 |
+    | MobileNumber| Pin  |
+    | 9604154175  | 2812 |
+    | 8788710785  | 7350 | 
+    | 1234567891  | 1250 |
     
     
     
